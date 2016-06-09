@@ -106,6 +106,65 @@ currentPopulation //notice that population of previous is unchanged
 
 //functional programming 
 
+//swift adopts
+    //first-class functions - same as any other type - functions can be passed as arguments
+    //pure functions -  (put in same input - expect same output)
+    //immutatbilty - mutability de-emphasized - hard to reason with data that may change 
+    //strong typing - increases runtime safety 
+
+//higher order functions - take at least one function as an input (map, filter, reduce/combine)
+
+let precintPopulations = [5000, 10000, 15000]
+
+let projectedPopulations = precintPopulations.map { //takes array (does something) and returns new array :)
+    (population: Int) -> Int in                     //.map applies function at each index
+        return population * 2
+}
+
+projectedPopulations
+
+let bigProjections = projectedPopulations.filter { //filters array for > 1000 - returns new array
+    (projection: Int) -> Bool in
+    return projection > 1000
+}
+
+bigProjections
+
+//let totalProjection = projectedPopulations.reduce(0) {
+//    (accumulatedProjection: Int, precintProjection: Int) -> Int in
+//    return accumulatedProjection + precintProjection
+//}
+
+//totalProjection
+
+//gold challenge - one line the totalProjection function 
+
+//var totalProjection = precintPopulations.reduce(0, {})
+
+var totalProjection = 0
+
+//for pop in precintPopulations {
+//    totalProjection = totalProjection + pop  //"naive" method
+//}
+//
+//totalProjection
+
+totalProjection = precintPopulations.reduce(0,combine: {$0 + $1}) // cleannn
+
+totalProjection
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
