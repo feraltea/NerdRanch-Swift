@@ -89,6 +89,24 @@ growBy500()
 currentPopulation += growBy500() //current pop + the 2000 from 4 growBy500 calls 
 
 //closures are reference types
+let anotherGrowBy500 = growBy500
+anotherGrowBy500() //total growth now 2500 but has no impact on currentPopulation
+
+makeGrowthTracker(forGrowth: 500)
+
+currentPopulation += growBy500()
+
+currentPopulation
+
+var newCityToTrack = 40000
+let growBy10000 = makeGrowthTracker(forGrowth: 10000)
+newCityToTrack += growBy10000()
+
+currentPopulation //notice that population of previous is unchanged 
+
+//functional programming 
+
+
 
 
 
