@@ -130,6 +130,44 @@ newBulb.toggle()
 bulbTemperature = newBulb.surfaceTemperatureForAmbientTemperature(ambientTemperature)
 print("the bulbs temperature is now \(bulbTemperature)") //bulb is off so just ambient temp :)
 
+//associated values 
+
+enum ShapeDimensions {
+    //Point has no associated value - it's dimensionless
+    case Point
+    //squares associated value is the legnth of one side
+    case Square(Double)
+    
+    //rectangles associated value defines its width and height 
+    case Rectangle(width: Double, height: Double)
+    
+    func area() -> Double { //function to return area for either shape
+        switch self {
+            case Point:
+                return 0
+            case let .Square(side):
+                return side * side
+            case let .Rectangle(width: w, height: h):
+                return w * h
+        }
+    }
+}
+
+//create instance of each enum with associated values
+var squareShape = ShapeDimensions.Square(10.0)
+var rectangleShape = ShapeDimensions.Rectangle(width: 5, height: 10)
+
+print("square's area = \(squareShape.area())")
+print("rectangle's area = \(rectangleShape.area())")
+
+var pointShape = ShapeDimensions.Point
+print("point's area = \(pointShape.area())") //no area, returns 0 as expected 
+
+//RECURSIVE ENUMERATIONS :0 
+
+
+
+
 
 
 
