@@ -154,14 +154,14 @@ print("the bulbs temperature is now \(bulbTemperature)") //bulb is off so just a
 //}
 
 //create instance of each enum with associated values
-var squareShape = ShapeDimensions.Square(10.0)
-var rectangleShape = ShapeDimensions.Rectangle(width: 5, height: 10)
-
-print("square's area = \(squareShape.area())")
-print("rectangle's area = \(rectangleShape.area())")
-
-var pointShape = ShapeDimensions.Point
-print("point's area = \(pointShape.area())") //no area, returns 0 as expected 
+//var squareShape = ShapeDimensions.Square(10.0)
+//var rectangleShape = ShapeDimensions.Rectangle(width: 5, height: 10)
+//
+//print("square's area = \(squareShape.area())")
+//print("rectangle's area = \(rectangleShape.area())")
+//
+//var pointShape = ShapeDimensions.Point
+//print("point's area = \(pointShape.area())") //no area, returns 0 as expected 
 
 //RECURSIVE ENUMERATIONS :0 
 
@@ -208,6 +208,8 @@ enum ShapeDimensions {
     //rectangles associated value defines its width and height
     case Rectangle(width: Double, height: Double)
     
+    case RightTriangle(base: Double, height: Double, hypotenuse: Double)
+    
     func area() -> Double { //function to return area for either shape
         switch self {
         case Point:
@@ -216,6 +218,8 @@ enum ShapeDimensions {
             return side * side
         case let .Rectangle(width: w, height: h):
             return w * h
+        case let .RightTriangle(base: a, height: b, hypotenuse: _):
+            return (a * b)/2
         }
     }
     func perimeter() -> Double {
@@ -226,6 +230,8 @@ enum ShapeDimensions {
             return side * 4
         case let .Rectangle(width: w, height: h):
             return (2 * w) + (2 * h)
+        case let .RightTriangle(base: a, height: b, hypotenuse: c):
+            return a + b + c
         }
     }
 }
@@ -236,6 +242,8 @@ radRectangle.perimeter()
 radRectangle.area()
 
 //silver challenge 
+//fix perimter and area function errors :) 
+
 
 
 
