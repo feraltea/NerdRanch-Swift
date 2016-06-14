@@ -132,26 +132,26 @@ print("the bulbs temperature is now \(bulbTemperature)") //bulb is off so just a
 
 //associated values 
 
-enum ShapeDimensions {
-    //Point has no associated value - it's dimensionless
-    case Point
-    //squares associated value is the legnth of one side
-    case Square(Double)
-    
-    //rectangles associated value defines its width and height 
-    case Rectangle(width: Double, height: Double)
-    
-    func area() -> Double { //function to return area for either shape
-        switch self {
-            case Point:
-                return 0
-            case let .Square(side):
-                return side * side
-            case let .Rectangle(width: w, height: h):
-                return w * h
-        }
-    }
-}
+//enum ShapeDimensions {
+//    //Point has no associated value - it's dimensionless
+//    case Point
+//    //squares associated value is the legnth of one side
+//    case Square(Double)
+//    
+//    //rectangles associated value defines its width and height 
+//    case Rectangle(width: Double, height: Double)
+//    
+//    func area() -> Double { //function to return area for either shape
+//        switch self {
+//            case Point:
+//                return 0
+//            case let .Square(side):
+//                return side * side
+//            case let .Rectangle(width: w, height: h):
+//                return w * h
+//        }
+//    }
+//}
 
 //create instance of each enum with associated values
 var squareShape = ShapeDimensions.Square(10.0)
@@ -165,15 +165,77 @@ print("point's area = \(pointShape.area())") //no area, returns 0 as expected
 
 //RECURSIVE ENUMERATIONS :0 
 
+//problem with the FamilyTree below is infinite recursion b/c compiler needs to know how much memory to allocate (heaviest case). Can't though b/c of FamilyTree within FamilyTree
 
+//enum FamilyTree {
+//    case NoKnownParents
+//    case OneKnownParent(name: String, ancestors: FamilyTree)
+//    case TwoKnownParents(fatherName: String, fatherAncestors: FamilyTree,
+//        mothername: String, motherAncestors: FamilyTree)
+//}
 
+//introduce the "indirect" keyword that essentially allows for pointers to work under the hood.. this is all you need to do to allow this to work. stores a pointerto associated data putting it somewhere else in memory rather than making the instance of FamilyTree big enough to hold all the data.
 
+//indirect enum FamilyTree {
+//    case NoKnownParents
+//    case OneKnownParent(name: String, ancestors: FamilyTree)
+//    case TwoKnownParents(fatherName: String, fatherAncestors: FamilyTree,
+//        mothername: String, motherAncestors: FamilyTree)
+//}
 
+//don't need to mark entire enum as indirect, can instead mark individual cases that require it
 
+enum FamilyTree {
+    case NoKnownParents
+    indirect case OneKnownParent(name: String, ancestors: FamilyTree)
+    indirect case TwoKnownParents(fatherName: String, fatherAncestors: FamilyTree,
+        mothername: String, motherAncestors: FamilyTree)
+}
 
+//creating a family tree
 
+let fredAncestors = FamilyTree.TwoKnownParents(fatherName: "fred sr", fatherAncestors: .OneKnownParent(name: "Beth", ancestors: .NoKnownParents), mothername: "Marsha", motherAncestors: .NoKnownParents)
 
+//bronze challenge
+//add a perimter() method to ShapeDimensions enum
 
+enum ShapeDimensions {
+    //Point has no associated value - it's dimensionless
+    case Point
+    //squares associated value is the legnth of one side
+    case Square(Double)
+    
+    //rectangles associated value defines its width and height
+    case Rectangle(width: Double, height: Double)
+    
+    func area() -> Double { //function to return area for either shape
+        switch self {
+        case Point:
+            return 0
+        case let .Square(side):
+            return side * side
+        case let .Rectangle(width: w, height: h):
+            return w * h
+        }
+    }
+    func perimeter() -> Double {
+        switch self {
+        case Point:
+            return 0.0
+        case let .Square(side):
+            return side * 4
+        case let .Rectangle(width: w, height: h):
+            return (2 * w) + (2 * h)
+        }
+    }
+}
+
+var radRectangle = ShapeDimensions.Rectangle(width: 2.0, height: 4.0)
+
+radRectangle.perimeter()
+radRectangle.area()
+
+//silver challenge 
 
 
 
