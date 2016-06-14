@@ -242,7 +242,7 @@ radRectangle.perimeter()
 radRectangle.area()
 
 //silver challenge 
-//fix perimter and area function errors :) 
+//fix perimter and area function errors :)
 
 
 
