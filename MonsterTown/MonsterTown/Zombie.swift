@@ -11,6 +11,10 @@ import Foundation
 class Zombie: Monster { //defines new type Zombie which inherits from the Monster type
     var walksWithLimp = true
     
+    class func makeGnarlyNoise() -> String { //type method uses class keyword
+        return "the sound a zombie makes"
+    }
+    
     override func terrorizeTown() {
         
         if town?.population >= 10 {
