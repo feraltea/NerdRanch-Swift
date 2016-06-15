@@ -12,9 +12,36 @@ class Zombie: Monster { //defines new type Zombie which inherits from the Monste
     var walksWithLimp = true
     
     override func terrorizeTown() {
-        town?.changePopulation(-10)
+        
+        if town?.population >= 10 {
+            town?.changePopulation(-10)
+        } else {
+            town?.population = 0
+            print("everyone is dead")
+        }
         super.terrorizeTown()
     }
+    func changeName(name: String, walksWithLimp: Bool) {
+        self.name = name
+        self.walksWithLimp = walksWithLimp
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

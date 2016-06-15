@@ -11,6 +11,7 @@
 		CC2D57541D10CEF4000A01F5 /* Town.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D57531D10CEF4000A01F5 /* Town.swift */; };
 		CC2D57561D10D21B000A01F5 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D57551D10D21B000A01F5 /* Monster.swift */; };
 		CC2D57581D10D41A000A01F5 /* Zombie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D57571D10D41A000A01F5 /* Zombie.swift */; };
+		CC2D575C1D10ED55000A01F5 /* Vampire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D575B1D10ED55000A01F5 /* Vampire.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		CC2D57531D10CEF4000A01F5 /* Town.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Town.swift; sourceTree = "<group>"; };
 		CC2D57551D10D21B000A01F5 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		CC2D57571D10D41A000A01F5 /* Zombie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zombie.swift; sourceTree = "<group>"; };
+		CC2D575B1D10ED55000A01F5 /* Vampire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vampire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				CC2D574C1D10CD6B000A01F5 /* main.swift */,
+				CC2D575B1D10ED55000A01F5 /* Vampire.swift */,
 				CC2D57571D10D41A000A01F5 /* Zombie.swift */,
 				CC2D57551D10D21B000A01F5 /* Monster.swift */,
 				CC2D57531D10CEF4000A01F5 /* Town.swift */,
@@ -131,6 +134,7 @@
 				CC2D574D1D10CD6B000A01F5 /* main.swift in Sources */,
 				CC2D57581D10D41A000A01F5 /* Zombie.swift in Sources */,
 				CC2D57561D10D21B000A01F5 /* Monster.swift in Sources */,
+				CC2D575C1D10ED55000A01F5 /* Vampire.swift in Sources */,
 				CC2D57541D10CEF4000A01F5 /* Town.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
