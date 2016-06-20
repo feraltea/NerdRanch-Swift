@@ -11,6 +11,11 @@ import Foundation
 class Monster {
     var town: Town?
     var name = "Monster"
+    static let isTerrifying = true //static property at class level. EVERY Monster isTerrifying = true
+    
+    class var makeGnarlyNoise: String {
+    return "the noise that a monster makes"
+    }
     
     var victimPool: Int {
         get {

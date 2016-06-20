@@ -12,8 +12,12 @@ import Foundation
 //make a function to print the town description
 
 struct Town {
-    let region = "South" //read-only property
-    var population = 5000 //this is a property.. just something that stores data. stored property that can be read and set
+    static let region = "South" //read-only property, static keyword means it's a type property rather than instance 
+    var population = 5000 { //this is a property.. just something that stores data. stored property that can be read and set
+        didSet(oldPopulation) { //property observer that responds when population changes
+            print("The population has changed to \(population) from \(oldPopulation)")
+        }
+    }
     var numberOfStoplights = 10
     
     enum Size {    //cannot be used outside of Town struct

@@ -41,7 +41,7 @@ fredTheZombie.changeName("fred ze zombie", walksWithLimp: false)
 print("Victim pool: \(fredTheZombie.victimPool)")
 fredTheZombie.victimPool = 500
 
-print("victim pool: \(fredTheZombie.victimPool) and population: \(fredTheZombie.town?.population)")
+print("victim pool: \(fredTheZombie.victimPool)")
 
 var newTown = Town()
 //newTown.changePopulation(-20)
@@ -57,7 +57,15 @@ dracula.town = newestTown
 dracula.terrorizeTown()
 dracula.town?.printTownDescription() //mistake I was making was calling population outside of the terrorizeTown method therefore no change in the number :(
 
-let zombieNoise = Zombie.makeGnarlyNoise() //to use type methods you simply call on the type itself rather than an instance of the type 
+//let zombieNoise = Zombie.makeGnarlyNoise() //to use type methods you simply call on the type itself rather than an instance of the type 
+
+print(Zombie.makeGnarlyNoise)
+
+if Zombie.isTerrifying {
+    print("run the fuck away")
+}
+
+
 
 
 
