@@ -13,7 +13,7 @@ class Vampire: Monster {
     var vampires = [Vampire]()
     
     override func terrorizeTown() {
-        vampires += [Vampire()]
+        vampires += [Vampire(town: town, monsterName: name)]
         if town?.population > 0 {
         town!.changePopulation(-1)
         }

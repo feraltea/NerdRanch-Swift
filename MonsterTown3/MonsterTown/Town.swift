@@ -25,13 +25,17 @@ struct Town {
     
     var numberOfStoplights: Int
     
-    init(region: String, population: Int, stoplights: Int) { //standard initializer
+    init?(region: String, population: Int, stoplights: Int) { //standard initializer
+        if population <= 0{
+            return nil
+        }
+        
         self.region = region
         self.population = population
         numberOfStoplights = stoplights 
     }
     
-    init(population: Int, stoplights: Int) { //initializer using delegation
+    init?(population: Int, stoplights: Int) { //initializer using delegation
         self.init(region: "N/A", population: population, stoplights: stoplights) //calls other initializer 
     }
     

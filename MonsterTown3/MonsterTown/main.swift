@@ -12,15 +12,17 @@ import Foundation
 
 //create new instance of Town 
 
-var myTown = Town(region: "SE", population: 1000, stoplights: 6) //initializer syntax to create new instance of Town with corresponding stored properties 
+var myTown = Town(region: "SE", population: 0, stoplights: 6) //initializer syntax to create new instance of Town with corresponding stored properties
+myTown?.printTownDescription()
+
 var newTown = Town(population: 5000, stoplights: 10) //assigns region placeholder N/A to newTown 
 
-newTown.printTownDescription()
+newTown?.printTownDescription()
 
 //let ts = myTown.townSize
-////myTown.changePopulation(1000000)
+myTown?.changePopulation(1000000)
 //print(ts)
-//print("size: \(myTown.townSize); population \(myTown.population)")
+print("size: \(myTown?.townSize); population \(myTown?.population)")
 ////print("The population of my town is \(myTown.population) and there are \(myTown.numberOfStoplights) stoplights")
 //
 ////let's instead use new instance method 
@@ -34,18 +36,28 @@ newTown.printTownDescription()
 //genericMonster.town = myTown
 //genericMonster.terrorizeTown()
 //
-//let fredTheZombie = Zombie() //creates instance of Zombie
-//fredTheZombie.town = myTown //assigns myTown to town var
-//fredTheZombie.terrorizeTown() //runs this funciton which results in -10 from population
-//fredTheZombie.town?.printTownDescription() //if there is a town (there is) description will be printed
+
+var someTown = Town(region: "NE", population: 7600, stoplights: 20)
+var fredTheZombie: Zombie? = Zombie(limp: true, fallingApart: true, town: someTown, monsterName: "Fred") //creates instance of Zombie. Order matters when initializing (super class initializations last)
+
+fredTheZombie?.terrorizeTown() //runs this funciton which results in -10 from population
+fredTheZombie?.town?.printTownDescription() //if there is a town (there is) description will be printed
+
+fredTheZombie?.changeName("fred ze zombie", walksWithLimp: false)
+////notice we leave out first paramater "name" but it's used as last word in method name
 //
-//fredTheZombie.changeName("fred ze zombie", walksWithLimp: false)
-////notice we leave out first paramater "name" but it's used as last word in method name 
+var convenientZombie = Zombie(limp: true, fallingApart: false)
+print("Victim pool: \(fredTheZombie?.victimPool)")
+fredTheZombie?.victimPool = 500
 //
-//print("Victim pool: \(fredTheZombie.victimPool)")
-//fredTheZombie.victimPool = 500
-//
-//print("victim pool: \(fredTheZombie.victimPool)")
+print("victim pool: \(fredTheZombie?.victimPool)")
+
+print(Zombie.makeGnarlyNoise)
+if Zombie.isTerrifying {
+    print("GTFO")
+}
+
+fredTheZombie = nil //deallocating all properties and therefore call "deinit"
 //
 //var newTown = Town()
 ////newTown.changePopulation(-20)

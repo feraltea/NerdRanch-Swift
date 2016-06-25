@@ -10,7 +10,8 @@ import Foundation
 
 class Monster {
     var town: Town?
-    var name = "Monster"
+    var name: String! //now requires initializer
+    
     static let isTerrifying = true //static property at class level. EVERY Monster isTerrifying = true
     
     class var makeGnarlyNoise: String {
@@ -26,6 +27,17 @@ class Monster {
         }
     }
     
+    
+    required init?(town: Town?, monsterName: String) { //custom class initializer with required keyword
+        
+        if monsterName == "" {
+            print("monster needs a name!")
+            return nil
+        }
+        self.town = town
+        name = monsterName
+    }
+    
     func terrorizeTown() {
         if town != nil {
             print("\(name) is terrorizing a town!")
@@ -34,4 +46,5 @@ class Monster {
         }
     }
 }
+
 
