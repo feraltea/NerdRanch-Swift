@@ -24,6 +24,33 @@ anotherHecate.name = "AnotherHecate"
 anotherHecate.name
 hecate.name
 
+struct Pantheon {
+    let chiefGod: GreekGod
+    let dateCreated = NSDate()
+}
+
+let pantheon = Pantheon(chiefGod: hecate)
+
+let zeus = GreekGod(name: "Zeus")
+
+zeus.name = "zeus jr"
+zeus.name
+
+pantheon.chiefGod.name
+let greekPantheon = pantheon
+hecate.name = "bolleli"
+greekPantheon.chiefGod.name
+
+greekPantheon.dateCreated
+
+let athena = GreekGod(name: "Athena")
+let gods = [athena, hecate, zeus]
+
+let godsCopy = gods
+gods.last?.name = "Jupiter"
+gods
+godsCopy
+
 
 
 
