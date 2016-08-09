@@ -8,21 +8,42 @@
 
 import Foundation
 
-//Instance methods
-//make a function to print the town description
-
 struct Town {
-    var population = 20
-    var numberOfStoplights = 10
+    
+    let region: String
+    
+    var population: Int {
+        didSet(oldPopulation) {
+            print("the population has changed to \(population) from \(oldPopulation)")
+        }
+    }
+    
+    var numberOfStoplights: Int
+    
+    //creation of custom initializer
+    init(region: String, population: Int, stopLights: Int) {
+        self.region = region
+        self.population = population
+        numberOfStoplights = stopLights
+    }
+    
+    enum Size {
+        case Small
+        case Medium
+        case Large
+    }
     
     func printTownDescription() {
-        print("Population is \(population) and there are \(numberOfStoplights) stoplights")
+        print("Population: \(population); number of stoplights: \(numberOfStoplights); region: \(region)")
     }
     
-    mutating func changePopulation(amount: Int) { //changes town information so needs to be mutating
-        population += amount
+    mutating func changePopulation(changePopBy: Int) {
+        population += (population - changePopBy)
     }
+    
 }
+
+
 
 
 

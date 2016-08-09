@@ -8,19 +8,19 @@
 
 import Foundation
 
-class Vampire: Monster {
-
-    var vampires = [Vampire]()
-    
-    override func terrorizeTown() {
-        vampires += [Vampire()]
-        if town?.population > 0 {
-        town!.changePopulation(-1)
-        }
-        super.terrorizeTown()
-    }
-}
-
-
-
+//class Vampire: Monster {
+//
+//    var vampires = [Vampire]()
+//    
+//    override func terrorizeTown() {
+//        vampires += [Vampire()]
+//        if town?.population > 0 {
+//        town!.changePopulation(-1)
+//        }
+//        super.terrorizeTown()
+//    }
+//}
+//
+//
+//
 

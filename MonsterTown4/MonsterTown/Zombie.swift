@@ -9,25 +9,33 @@
 import Foundation
 
 class Zombie: Monster { //defines new type Zombie which inherits from the Monster type
-    var walksWithLimp = true
+    
+    var walksWithLimp: Bool
+    private(set) var isFallingApart: Bool
+    
+    init(limp: Bool, fallingApart: Bool, town: Town?, monsterName: String) {
+        walksWithLimp = limp
+        isFallingApart = fallingApart
+        super.init(town: town, monsterName: monsterName)
+    }
+    
+    convenience init(limp: Bool, fallingApart: Bool) {
+        self.init(limp: limp, fallingApart: fallingApart, town: nil, monsterName: "Fred")
+        if walksWithLimp {
+            print("this zombie has a bad fucking knee, yo")
+        }
+    }
     
     class func makeGnarlyNoise() -> String { //type method uses class keyword
         return "the sound a zombie makes"
     }
     
-    override func terrorizeTown() {
+    final override func terrorizeTown() {
         
         if town?.population >= 10 {
             town?.changePopulation(-10)
-        } else {
-            town?.population = 0
-            print("everyone is dead")
         }
         super.terrorizeTown()
-    }
-    func changeName(name: String, walksWithLimp: Bool) {
-        self.name = name
-        self.walksWithLimp = walksWithLimp
     }
 }
 
