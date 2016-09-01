@@ -29,6 +29,9 @@ var myTown = Town(region: "North", population: 1000, stopLights: 6)
 //genericMonster.terrorizeTown()
 //
 let fredTheZombie = Zombie(limp: true, fallingApart: true, town: myTown,  monsterName: "Fred")
+
+var convenientZombie = Zombie(limp: true, fallingApart: false) //new instance of Zombie using convenience initializer
+
 //let fredTheZombie = Zombie() Doesn't work b/c no empty initializer
 //print("dis zombie is named \(fredTheZombie.name) and it is terrorizing \(fredTheZombie.town)")
 //let fredTheZombie = Zombie() //creates instance of Zombie
