@@ -67,16 +67,43 @@ func printTable(rowLabels: [String], columnLabels: [String], data: [[Int]]) {
     }
 }
 
-let rowLabels = ["Elliot", "Darlene", "Mr. Robot"]
+//let rowLabels = ["Elliot", "Darlene", "Mr. Robot"]
+//
+//let columnLabels = ["Age", "Yrs of experience"]
+//
+//let data = [
+//[30, 6],
+//[40, 2],
+//[50, 3],
+//]
 
-let columnLabels = ["Age", "Yrs of experience"]
+//printTable(rowLabels: rowLabels, columnLabels: columnLabels, data: data)
 
-let data = [
-[30, 6],
-[40, 2],
-[50, 3],
-]
+struct Person {
+    let name: String
+    let age: Int
+    let yearsOfExperience: Int
+}
 
-printTable(rowLabels: rowLabels, columnLabels: columnLabels, data: data)
+struct Department {
+    let name: String
+    var people = [Person]()
+    
+    init(name: String) {
+        self.name = name
+    }
+    mutating func addPerson(person: Person) {
+        people.append(person)
+    }
+}
+
+var department = Department(name: "Engineering")
+department.addPerson(person: Person(name: "Joe", age: 35, yearsOfExperience: 8))
+department.addPerson(person: Person(name: "Frank", age: 33, yearsOfExperience: 12))
+department.addPerson(person: Person(name: "Jerald", age: 24, yearsOfExperience: 2))
+
+
+
+
 
 
