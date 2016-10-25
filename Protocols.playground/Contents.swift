@@ -6,19 +6,70 @@ import UIKit
 //
 //print(str)
 
-func printTable(data: [[Int]]) {
-    for row in data {
-        //create an empty string 
-        var out = ""
+func padding(amount: Int) -> String {
+    var paddingString = ""
+    for _ in 0..<amount {
+        paddingString += " "
+    }
+        return paddingString
+}
+
+
+//func printTable(data: [[Int]]) {
+//    for row in data {
+//        //create an empty string 
+//        var out = ""
+//        
+//        //append each item in this row to our string 
+//        for item in row {
+//            out += " \(item) |"
+//        }
+//        //done, now print 
+//        print(out)
+//    }
+//}
+
+func printTable(rowLabels: [String], columnLabels: [String], data: [[Int]]) {
+    //create an array of the width of each row label 
+    let rowLabelWidths = rowLabels.map { $0.characters.count }
+    
+    //determine length of the longest row label
+    guard let maxRowLabelWidth = rowLabelWidths.max() else {
+        return
+    }
+    
+    //create first row containing column headers
+    var firstRow: String = padding(amount: maxRowLabelWidth) + " |"
+    
+    //also keep track of width of each column 
+    var columnWidths = [Int]()
+    
+    for columnLabel in columnLabels {
+        let columnHeader = " \(columnLabel) |"
+        firstRow += columnHeader
+        columnWidths.append(columnHeader.characters.count)
+    }
+    print(firstRow)
+    
+    for (i, row) in data.enumerated() {
+        //pad the row label out so they are all the same length
+        let paddingAmount = maxRowLabelWidth - rowLabelWidths[i]
+        var out = rowLabels[i] + padding(amount: paddingAmount) + " |"
         
-        //append each item in this row to our string 
-        for item in row {
-            out += " \(item) |"
+        //append each item in this row to our string
+        for (j, item) in row.enumerated() {
+            let itemString = " \(item) |"
+            let paddingAmount = columnWidths[j] - itemString.characters.count
+            out += padding(amount: paddingAmount) + itemString
         }
-        //done, now print 
+        //done, print
         print(out)
     }
 }
+
+let rowLabels = ["Elliot", "Darlene", "Mr. Robot"]
+
+let columnLabels = ["Age", "Yrs of experience"]
 
 let data = [
 [30, 6],
@@ -26,6 +77,6 @@ let data = [
 [50, 3],
 ]
 
-printTable(data: data)
+printTable(rowLabels: rowLabels, columnLabels: columnLabels, data: data)
 
 
