@@ -36,6 +36,25 @@ class Lexer {
         input.formIndex(&position, offsetBy: 1)
     }
     
+    func getNumber() -> Int {
+        var value = 0
+        
+        while let nextCharacter = peek () {
+            switch nextCharacter {
+                case "0" ... "9":
+                //another digit - add it into value 
+                let digitValue = Int(String(nextCharacter))!
+                value = 10*value + digitValue
+                advance()
+                
+            default:
+                //a non-digit - go back to regular lexing
+                return value
+            }
+        }
+        return value
+    }
+    
     func lex() throws -> [Token] {
         var tokens = [Token]()
         
@@ -44,6 +63,8 @@ class Lexer {
                 
                 case "0" ... "9":
                 //start of a number - need to grab the rest 
+                let value = getNumber()
+                tokens.append(.Number(value))
                 
                 case "+":
                 tokens.append( .Plus)
@@ -55,14 +76,50 @@ class Lexer {
                 
                 default:
                 //something unexpected - need to send back an error
-                throw ErrorType.InvalidCharacter(Character)
+                throw ErrorType.InvalidCharacter(nextCharacter)
                 
             }
         }
         return tokens
     }
+    
 }
 
+func evaluate(input: String) {
+    print("evaluating: \(input)")
+    let lexer = Lexer(input: input)
+    
+    do {
+        let tokens = try lexer.lex()
+        print("Lexer output: \(tokens)")
+    } catch Lexer.ErrorType.InvalidCharacter(let character) {
+            print("Input contained an invalid character: \(character)")
+    } catch {
+        print("an error occurred: \(error)")
+    }
+}
+
+
+//evaluate(input: "10 + 3 + 5")
+
+class Parser {
+    let tokens: [Token]
+    var position = 0
+    
+    init(tokens: [Token]) {
+        self.tokens = tokens
+    }
+    
+    func getNextToken() -> Token? {
+        guard position < tokens.count else {
+            return nil
+        }
+        position += 1
+        return tokens[position]
+    }
+}
+
+print(str)
 
 
 
