@@ -10,6 +10,11 @@ enum Token {
 }
 
 class Lexer {
+    
+    enum ErrorType: Error {
+        case InvalidCharacter(Character)
+    }
+    
     let input: String.CharacterView
     var position: String.CharacterView.Index
     
@@ -30,10 +35,33 @@ class Lexer {
         assert(position < input.endIndex, "cannot advnace past end!")
         input.formIndex(&position, offsetBy: 1)
     }
+    
+    func lex() throws -> [Token] {
+        var tokens = [Token]()
+        
+        while let nextCharacter = peek() {
+            switch nextCharacter {
+                
+                case "0" ... "9":
+                //start of a number - need to grab the rest 
+                
+                case "+":
+                tokens.append( .Plus)
+                advance()
+                
+                case " ":
+                //just advance here to ignore spaces
+                advance()
+                
+                default:
+                //something unexpected - need to send back an error
+                throw ErrorType.InvalidCharacter(Character)
+                
+            }
+        }
+        return tokens
+    }
 }
-
-print(str)
-
 
 
 
