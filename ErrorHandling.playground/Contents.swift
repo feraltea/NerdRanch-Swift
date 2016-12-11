@@ -32,7 +32,7 @@ class Lexer {
     }
 }
 
-
+print(str)
 
 
 
